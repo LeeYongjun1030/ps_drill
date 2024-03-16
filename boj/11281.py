@@ -49,3 +49,14 @@ for scc in sccs:
                 possible = False
 if possible: print(1)
 else: print(0)
+
+if possible:
+    result = [-1 for i in range(2*n+1)]
+    lst = []
+    for scc in sccs[::-1]:
+        for e in scc:
+            if result[e] != -1:
+                continue
+            result[e] = 0
+            result[-e] = 1
+    print(*result[1:n+1])
